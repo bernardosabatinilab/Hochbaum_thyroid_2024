@@ -65,7 +65,7 @@ def policy(Q_l, Q_r, action_prev_l, beta, bias_l):
         prob_l (float):
             'logits': Probability of taking left action.
     """
-    return sig_jit(beta*(Q_l - Q_r) + bias_l + 0*((2*action_prev_l)-1))
+    return sig_jit(beta*(Q_l - Q_r) + bias_l)
 policy_jit = torch.jit.script(policy)
 
 def act(prob_l):
